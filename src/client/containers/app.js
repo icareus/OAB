@@ -6,27 +6,26 @@ import { connect } from 'react-redux'
 
 import mapStateToProps from '../selectors/storeSelector'
 import Bandit from '../components/bandit'
+import loadFruits from '../actions/fruits'
 
-const App = ({ fruits }) => (
-  <div className='app-wrapper'>
-    <span><h1>One Armed Bandit - please play responsibly ;)</h1></span>
-    <Bandit fruits={ fruits } />
-  </div>
-)
+class App extends React.Component {
+  static propTypes = {
+    fruits: React.PropTypes.array.isRequired,
+    loadFruits: React.PropTypes.func.isRequired,
+  }
 
-App.propTypes = {
-  fruits: React.PropTypes.array.isRequired,
-  dispatch: React.PropTypes.func,
+  componentDidMount = () => loadFruits(this.props.fruits)
+
+  render() {
+    return (
+      <div className='app-wrapper'>
+        <span><h1>One Armed Bandit - please play responsibly ;)</h1></span>
+        <Bandit fruits={ this.props.fruits } />
+      </div>)}
 }
 
 export default connect(
   state => mapStateToProps(state),
   {
-    // mapDispatchToProps
-    // fetchTasks: getTasks,
-    // fetchLists: getLists,
-    // onNewList: pushList,
-    // onNewTask: pushTask,
-    // onDelTask: deleteTask,
-    // onDelList: deleteList,
+    loadFruits
   })(App);

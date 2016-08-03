@@ -6,8 +6,4 @@ const Spinner = () => {
     </div>)
 }
 
-// Spinner.propTypes = {
-//   // api: React.PropTypes.object,
-// }
-
 export default Spinner

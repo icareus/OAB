@@ -10,7 +10,7 @@ const Bandit = ({ fruits }) => (
   <div className='fruits'>
     <div className='flex-container'>
       {_.map(fruits, f => 
-        <Fruit key={ f.id } data={ f } />)}
+        <Fruit key={ f.id } fruit={ f } />)}
     </div>
   </div>
 )
