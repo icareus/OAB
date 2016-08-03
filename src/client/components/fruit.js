@@ -3,7 +3,7 @@ import React from 'react'
 // import Spinner from './spinner'
 
 const Fruit = ({ fruit }) => {
-  console.log(fruit)
+  // console.log('in fruit', fruit)
   if (!fruit.icon || !fruit.color) { return (<div className='spinner'></div>) }
   return (
     <i

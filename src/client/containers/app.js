@@ -14,18 +14,14 @@ class App extends React.Component {
     loadFruits: React.PropTypes.func.isRequired,
   }
 
-  componentDidMount = () => loadFruits(this.props.fruits)
+  componentDidMount = () => this.props.dispatch(loadFruits())
 
   render() {
     return (
       <div className='app-wrapper'>
         <span><h1>One Armed Bandit - please play responsibly ;)</h1></span>
         <Bandit fruits={ this.props.fruits } />
-      </div>)}
+      </div>) }
 }
 
-export default connect(
-  state => mapStateToProps(state),
-  {
-    loadFruits
-  })(App);
+export default connect(state => mapStateToProps(state))(App);

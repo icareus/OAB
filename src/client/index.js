@@ -16,7 +16,7 @@ const initialState = {
   fruits: fruitsFactory(fruitsNumber),
 };
 
-console.log(initialState);
+// console.log(initialState);
 
 const oneArmedStore = createStore(
   fruitsReducer,
