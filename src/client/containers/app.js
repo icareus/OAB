@@ -8,6 +8,8 @@ import mapStateToProps from '../selectors/storeSelector'
 import Bandit from '../components/bandit'
 import loadFruits from '../actions/fruits'
 
+console.log(loadFruits);
+
 class App extends React.Component {
   static propTypes = {
     fruits: React.PropTypes.array.isRequired,

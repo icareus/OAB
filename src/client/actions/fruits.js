@@ -32,6 +32,8 @@ import _ from 'lodash'
 
 export const UPDATE_FRUIT = 'UPDATE_FRUIT'
 export const UPDATE_FRUITS = 'UPDATE_FRUITS'
+
+const AMOUNT = 5
 const MIN_TIME = 1000
 const MAX_TIME = 4200
 
@@ -55,17 +57,21 @@ const updateFruits = (fruits) => ({
   fruits,
 })
 
-const loadFruit = (id) => dispatch => new Promise((resolve, reject) => {
-  setTimeout(resolve, randTime(), {
-    id,
-    color: randElem(colors),
-    icon: randElem(icons),
-  })
+const newFruit = (id) => ({
+  id,
+  color: randElem(colors),
+  icon: randElem(icons),
 })
-.then(f => { dispatch(updateFruit(f)); return(f) })
+
+const loadFruit = (id) => dispatch => new Promise((resolve, reject) => {
+  setTimeout(resolve, randTime(), newFruit(id))
+}).then(f => {
+  dispatch(updateFruit(f));
+  return f
+})
 
 const loadFruits = () => dispatch => Promise
-  .all(_.times(5, id => dispatch(loadFruit(id))))
+  .all(_.times(AMOUNT, id => dispatch(loadFruit(id))))
   .then(fruits => dispatch(updateFruits(fruits)))
 
 export default loadFruits

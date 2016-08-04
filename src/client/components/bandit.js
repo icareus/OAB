@@ -9,15 +9,17 @@ import Fruit from './fruit'
 const Bandit = ({ fruits }) => (
   <div className='fruits'>
     <div className='flex-container'>
-      {_.map(fruits, f => 
-        <Fruit key={ f.id } fruit={ f } />)}
+      {_.map(fruits, f =>
+        <div className='flex-item'>
+          <Fruit key={ f.id } fruit={ f } />
+        </div>)}
     </div>
   </div>
 )
 
 Bandit.propTypes = {
-  handlers: React.PropTypes.object,
   fruits: React.PropTypes.array.isRequired,
+  handlers: React.PropTypes.object,
 }
 
 export default Bandit
